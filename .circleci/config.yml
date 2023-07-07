@@ -7,10 +7,10 @@ jobs:
       - run:
           name: Building SuperRyzen Kernel
           command: |
-            wget https://raw.githubusercontent.com/TianWalkzzMiku/SRyzen-CAF/caf/build-start.sh
+            wget https://raw.githubusercontent.com/TianWalkzzMiku/SRyzen-CAF/caf-ksu/build-start.sh
             bash build-start.sh stable clang
             cd kernel
-            wget https://raw.githubusercontent.com/TianWalkzzMiku/SRyzen-CAF/caf/build-dtb.sh
+            wget https://raw.githubusercontent.com/TianWalkzzMiku/SRyzen-CAF/caf-ksu/build-dtb.sh
             bash build-dtb.sh a26x clang qpnp
             bash build-dtb.sh lavender clang qpnp
             bash build-dtb.sh tulip clang qpnp
@@ -21,7 +21,7 @@ jobs:
             bash build-dtb.sh tulip clang qti
             bash build-dtb.sh whyred clang qti
             git restore .
-            wget https://raw.githubusercontent.com/TianWalkzzMiku/SRyzen-CAF/caf/build.sh
+            wget https://raw.githubusercontent.com/TianWalkzzMiku/SRyzen-CAF/caf-ksu/build.sh
             bash build.sh a26x newcam clang
             bash build.sh a26x oldcam clang
             bash build.sh a26x tencam clang
@@ -42,5 +42,5 @@ jobs:
             bash build.sh tulip oldcam oc clang
             bash build.sh whyred newcam oc clang
             bash build.sh whyred oldcam oc clang
-            wget https://raw.githubusercontent.com/TianWalkzzMiku/SRyzen-CAF/caf/build-final.sh
+            wget https://raw.githubusercontent.com/TianWalkzzMiku/SRyzen-CAF/caf-ksu/build-final.sh
             bash build-final.sh clang
