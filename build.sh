@@ -9,8 +9,8 @@ KERNEL_DIR=$PWD
 BUILD_START=$(date +"%s")
 
 # Name and version of kernel
-KERNEL_NAME="SuperRyzen-OSS"
-KERNEL_VERSION="v10"
+KERNEL_NAME="Ice+-OSS"
+KERNEL_VERSION="Aqua"
 
 # Device name
 if [[ "$*" =~ "a26x" ]]; then
@@ -49,7 +49,7 @@ export BOT_TOKEN
 export ARCH=arm64
 export SUBARCH=arm64
 export KBUILD_BUILD_USER="Tiann"
-export KBUILD_BUILD_HOST="MobZ"
+export KBUILD_BUILD_HOST="IcePrjkt"
 AK3_DIR=$KERNEL_DIR/ak3-$DEVICE
 KERNEL_IMG=$KERNEL_DIR/out/arch/arm64/boot/Image.gz
 ZIP_NAME="$KERNEL_NAME"_"$DEVICE""$LOCALVERSION"_"$CONFIGVERSION".zip
@@ -91,7 +91,7 @@ push_document() {
 }
 
 # Export defconfig
-make O=out super-"$DEVICE"-"$CONFIGVERSION"_defconfig
+make O=out ice-"$DEVICE"-"$CONFIGVERSION"_defconfig
 
 # Enable QTI haptics for all build
 scripts/config --file out/.config -e CONFIG_INPUT_QTI_HAPTICS

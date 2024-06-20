@@ -4,7 +4,7 @@
 
 # Clone kernel source
 if [[ "$*" =~ "stable" ]]; then
-    git clone --depth=1 https://github.com/TianWalkzzMiku/SRyzen-CAF.git -b caf kernel
+    git clone --depth=1 https://github.com/TianWalkzzMiku/ICE-PLUS-CAF.git -b caf kernel
     cd kernel || exit
 fi
 
@@ -35,7 +35,7 @@ push_message() {
 # Push message to telegram
 push_message "
 <b>======================================</b>
-<b>Start Building :</b> <code>SuperRyzen Kernel</code>
+<b>Start Building :</b> <code>Ice+ Kernel</code>
 <b>Linux Version :</b> <code>$(make kernelversion | cut -d " " -f5 | tr -d '\n')</code>
 <b>Source Branch :</b> <code>$(git rev-parse --abbrev-ref HEAD)</code>
 <b>======================================</b> "

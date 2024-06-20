@@ -34,11 +34,11 @@ push_message() {
 # Push message to telegram
 push_message "
 <b>======================================</b>
-<b>Success Building :</b> <code>SuperRyzen Kernel</code>
+<b>Success Building :</b> <code>Ice+ Kernel</code>
 <b>Linux Version :</b> <code>$(make kernelversion | cut -d " " -f5 | tr -d '\n')</code>
 <b>Build Date :</b> <code>$(date +"%A, %d %b %Y, %H:%M:%S")</code>
 <b>Build Using :</b> <code>$CPU $CORES thread</code>
 <b>Toolchain :</b> <code>$KBUILD_COMPILER_STRING</code>
 <b>Last Changelog :</b> <code>$(git log --pretty=format:'%s' -1)</code>
 <b>======================================</b>
-<b>Provide your feedback in the @SRKSRSupport group for this Beta Build 😉</b> "
+<b>Provide your feedback on my acc @OctoPhush 😉</b> "
