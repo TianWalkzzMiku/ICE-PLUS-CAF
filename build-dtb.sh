@@ -43,7 +43,7 @@ push_document() {
 }
 
 # Export defconfig
-make O=out super-"$DEVICE"-oldcam_defconfig
+make O=out ice-"$DEVICE"-oldcam_defconfig
 
 # Start compile
 if [[ "$*" =~ "clang" ]]; then
