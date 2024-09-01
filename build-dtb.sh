@@ -19,6 +19,7 @@ fi
 # Setup environtment
 export ARCH=arm64
 export SUBARCH=arm64
+export CLANG_PATH="$KERNEL_DIR/clang/bin:$CLANG_PATH"
 AK3_DIR=$KERNEL_DIR/ak3-$DEVICE
 KERNEL_IMG=$KERNEL_DIR/out/arch/arm64/boot/Image.gz
 
@@ -46,22 +47,13 @@ push_document() {
 make O=out ice-"$DEVICE"-oldcam_defconfig
 
 # Start compile
-if [[ "$*" =~ "clang" ]]; then
-    export PATH="$KERNEL_DIR/clang/bin:$PATH"
-    make -j"$(nproc --all)" O=out \
-        CC=clang \
-        AR=llvm-ar \
-        NM=llvm-nm \
-        OBJCOPY=llvm-objcopy \
-        OBJDUMP=llvm-objdump \
-        STRIP=llvm-strip \
-        CROSS_COMPILE=aarch64-linux-gnu- \
-        CROSS_COMPILE_ARM32=arm-linux-gnueabi-
-elif [[ "$*" =~ "gcc" ]]; then
-    export CROSS_COMPILE="$KERNEL_DIR/arm64/bin/aarch64-linux-gnu-"
-    export CROSS_COMPILE_ARM32="$KERNEL_DIR/arm32/bin/arm-linux-gnueabi-"
+        CC="$CLANG_PATH/clang" \
+        AR="$CLANG_PATH/llvm-ar" \
+        OBJDUMP="$CLANG_PATH/llvm-objdump" \
+
+    export CROSS_COMPILE="$KERNEL_DIR/arm64/bin/aarch64-none-linux-gnu-"
+    export CROSS_COMPILE_ARM32="$KERNEL_DIR/arm32/bin/arm-none-eabi-"
     make -j"$(nproc --all)" O=out ARCH=arm64
-fi
 
 # Push message if build error
 if ! [ -a "$KERNEL_IMG" ]; then

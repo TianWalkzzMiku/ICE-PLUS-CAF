@@ -8,39 +8,39 @@ jobs:
           name: Building SuperRyzen Kernel
           command: |
             wget https://raw.githubusercontent.com/TianWalkzzMiku/SRyzen-CAF/caf/build-start.sh
-            bash build-start.sh stable clang
+            bash build-start.sh stable clang gcc
             cd kernel
             wget https://raw.githubusercontent.com/TianWalkzzMiku/SRyzen-CAF/caf/build-dtb.sh
-            bash build-dtb.sh a26x clang qpnp
-            bash build-dtb.sh lavender clang qpnp
-            bash build-dtb.sh tulip clang qpnp
-            bash build-dtb.sh whyred clang qpnp
+            bash build-dtb.sh a26x qpnp
+            bash build-dtb.sh lavender qpnp
+            bash build-dtb.sh tulip qpnp
+            bash build-dtb.sh whyred qpnp
             git apply qti.patch
-            bash build-dtb.sh a26x clang qti
-            bash build-dtb.sh lavender clang qti
-            bash build-dtb.sh tulip clang qti
-            bash build-dtb.sh whyred clang qti
+            bash build-dtb.sh a26x qti
+            bash build-dtb.sh lavender qti
+            bash build-dtb.sh tulip qti
+            bash build-dtb.sh whyred qti
             git restore .
             wget https://raw.githubusercontent.com/TianWalkzzMiku/SRyzen-CAF/caf/build.sh
-            bash build.sh a26x newcam clang
-            bash build.sh a26x oldcam clang
-            bash build.sh a26x tencam clang
-            bash build.sh lavender newcam clang
-            bash build.sh lavender oldcam clang
-            bash build.sh tulip newcam clang
-            bash build.sh tulip oldcam clang
-            bash build.sh whyred newcam clang
-            bash build.sh whyred oldcam clang
+            bash build.sh a26x newcam
+            bash build.sh a26x oldcam
+            bash build.sh a26x tencam
+            bash build.sh lavender newcam
+            bash build.sh lavender oldcam
+            bash build.sh tulip newcam
+            bash build.sh tulip oldcam
+            bash build.sh whyred newcam
+            bash build.sh whyred oldcam
             git apply oc.patch
-            bash build-dtb.sh tulip clang qpnp
-            bash build-dtb.sh whyred clang qpnp
+            bash build-dtb.sh tulip qpnp
+            bash build-dtb.sh whyred qpnp
             git apply qti.patch
-            bash build-dtb.sh tulip clang qti
-            bash build-dtb.sh whyred clang qti
+            bash build-dtb.sh tulip qti
+            bash build-dtb.sh whyred qti
             git restore .
-            bash build.sh tulip newcam oc clang
-            bash build.sh tulip oldcam oc clang
-            bash build.sh whyred newcam oc clang
-            bash build.sh whyred oldcam oc clang
+            bash build.sh tulip newcam oc
+            bash build.sh tulip oldcam oc
+            bash build.sh whyred newcam oc
+            bash build.sh whyred oldcam oc
             wget https://raw.githubusercontent.com/TianWalkzzMiku/SRyzen-CAF/caf/build-final.sh
-            bash build-final.sh clang
+            bash build-final.sh

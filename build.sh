@@ -48,6 +48,7 @@ export CHAT_ID
 export BOT_TOKEN
 export ARCH=arm64
 export SUBARCH=arm64
+export CLANG_PATH="$KERNEL_DIR/clang/bin:$CLANG_PATH"
 export KBUILD_BUILD_USER="Tiann"
 export KBUILD_BUILD_HOST="IcePrjkt"
 AK3_DIR=$KERNEL_DIR/ak3-$DEVICE
@@ -97,21 +98,13 @@ make O=out ice-"$DEVICE"-"$CONFIGVERSION"_defconfig
 scripts/config --file out/.config -e CONFIG_INPUT_QTI_HAPTICS
 
 # Start compile
-if [[ "$*" =~ "clang" ]]; then
-    make -j"$(nproc --all)" O=out \
-        CC=clang \
-        AR=llvm-ar \
-        NM=llvm-nm \
-        OBJCOPY=llvm-objcopy \
-        OBJDUMP=llvm-objdump \
-        STRIP=llvm-strip \
-        CROSS_COMPILE=aarch64-linux-gnu- \
-        CROSS_COMPILE_ARM32=arm-linux-gnueabi-
-elif [[ "$*" =~ "gcc" ]]; then
-    export CROSS_COMPILE="$KERNEL_DIR/arm64/bin/aarch64-elf-"
-    export CROSS_COMPILE_ARM32="$KERNEL_DIR/arm32/bin/arm-eabi-"
+        CC="$CLANG_PATH/clang" \
+        AR="$CLANG_PATH/llvm-ar" \
+        OBJDUMP="$CLANG_PATH/llvm-objdump" \
+
+    export CROSS_COMPILE="$KERNEL_DIR/arm64/bin/aarch64-none-linux-gnu-"
+    export CROSS_COMPILE_ARM32="$KERNEL_DIR/arm32/bin/arm-none-eabi-"
     make -j"$(nproc --all)" O=out ARCH=arm64
-fi
 
 # Push message if build error
 if ! [ -a "$KERNEL_IMG" ]; then

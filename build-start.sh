@@ -10,10 +10,10 @@ fi
 
 # Clone toolchain
 if [[ "$*" =~ "clang" ]]; then
-    git clone --depth=1 https://gitlab.com/Panchajanya1999/azure-clang clang
+    git clone --depth=1 https://github.com/bibi09456/sdclang clang
 elif [[ "$*" =~ "gcc" ]]; then
-    git clone --depth=1 https://github.com/avinakefin/GCC-12-arm32 arm32
-    git clone --depth=1 https://github.com/avinakefin/GCC-12-aarch64 arm64
+    git clone --depth=1 ttps://github.com/Project-1CE/prebuilts_gcc_linux-x86_arm_arm-none-eabi arm32
+    git clone --depth=1 ttps://github.com/Project-1CE/prebuilts_gcc_linux-x86_arm_arm-none-eabi arm64
 fi
 
 # Clone anykernel3
