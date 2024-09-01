@@ -8,7 +8,7 @@ jobs:
           name: Building SuperRyzen Kernel
           command: |
             wget https://raw.githubusercontent.com/TianWalkzzMiku/SRyzen-CAF/caf/build-start.sh
-            bash build-start.sh stable clang gcc
+            bash build-start.sh stable
             cd kernel
             wget https://raw.githubusercontent.com/TianWalkzzMiku/SRyzen-CAF/caf/build-dtb.sh
             bash build-dtb.sh a26x qpnp

@@ -9,12 +9,9 @@ if [[ "$*" =~ "stable" ]]; then
 fi
 
 # Clone toolchain
-if [[ "$*" =~ "clang" ]]; then
     git clone --depth=1 https://github.com/bibi09456/sdclang clang
-elif [[ "$*" =~ "gcc" ]]; then
     git clone --depth=1 https://github.com/Project-1CE/prebuilts_gcc_linux-x86_arm_arm-none-eabi arm32
     git clone --depth=1 https://github.com/Project-1CE/prebuilts_gcc_linux-x86_aarch64_aarch64-none-linux-gnu arm64
-fi
 
 # Clone anykernel3
 git clone --depth=1 https://github.com/TianWalkzzMiku/AK3-4.4.git -b lavender-dtb ak3-lavender
